@@ -1,0 +1,33 @@
+<div class="dashboard-style">
+
+</div>
+
+<div class="flex">
+  <h2>Employee</h2>
+  <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-succes p-button-text"
+    title="Add new employee"></button>
+</div>
+
+<table>
+
+  <tr>
+    <th>Firstname</th>
+    <th>Surname</th>
+    <th>Date Of birth</th>
+    <th>Email</th>
+    <th></th>
+    <!-- <th></th> -->
+  </tr>
+
+  <tr *ngFor="let developers of developers;let i=index">
+    <td>{{developers.firstName}}</td>
+    <td>{{developers.lastName}}</td>
+    <td>{{developers.dob}}</td>
+    <td>{{developers.email}}</td>
+
+    <td><button p class="rounded-outline-blue " [routerLink]=[i]>Details</button></td>
+    <!-- <td><button p class="rounded-outline-blue "
+              [routerLink]="" >Delete</button></td> -->
+  </tr>
+
+</table>
