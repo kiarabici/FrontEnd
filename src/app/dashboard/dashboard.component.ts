@@ -1,7 +1,9 @@
+// dashboard.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeveloperService } from '../services/developer.service';
-;
+import { Developer } from '../interfaces/developer'; // Ensure this import is correct
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +11,9 @@ import { DeveloperService } from '../services/developer.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  developers: any[] = [];
+  developers: Developer[] = [];
+  filteredDevelopers: Developer[] = [];
+  searchTerm: string = '';
 
   constructor(
     private router: Router,
@@ -21,18 +25,43 @@ export class DashboardComponent implements OnInit {
   }
 
   loadDevelopers(): void {
-    this.developerService.getDevelopers()
-      .subscribe(
-        (data: any[]) => {
-          this.developers = data;
-        },
-        error => {
-          console.error('Error loading developers: ', error);
-        }
-      );
+    this.developerService.getDevelopers().subscribe(
+      (data: Developer[]) => {
+        this.developers = data;
+        this.filteredDevelopers = [...this.developers];
+      },
+      error => {
+        console.error('Error loading developers: ', error);
+      }
+    );
   }
 
-  goToAddDeveloper(): void {
-    this.router.navigate(['/app-add-developer']);
+  showForm(): void {
+    this.router.navigate(['new']);
+  }
+
+  editDeveloper(id: number): void {
+    this.router.navigate(['edit', id]);
+  }
+
+  deleteDeveloper(id: number | undefined): void {
+    if (id === undefined) {
+      console.error('Cannot delete developer: ID is undefined');
+      return;
+    }
+
+    if (confirm('Are you sure you want to delete this developer?')) {
+      this.developerService.deleteDeveloper(id).subscribe(() => {
+        this.loadDevelopers(); // Reload the developers list after deletion
+      });
+    }
+  }
+
+
+  searchDevelopers(): void {
+    this.filteredDevelopers = this.developers.filter(developer =>
+      developer.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      developer.skills.some(skill => skill.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    );
   }
 }

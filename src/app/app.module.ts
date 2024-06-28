@@ -12,6 +12,7 @@ import { EditComponent } from './dev-details/edit/edit.component';
 import { DeleteDeveloperComponent } from './delete-developer/delete-developer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     NgbModule,
     HttpClientModule,
+    FormsModule ,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
