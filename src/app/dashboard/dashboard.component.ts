@@ -1,5 +1,3 @@
-// dashboard.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeveloperService } from '../services/developer.service';
@@ -25,7 +23,7 @@ export class DashboardComponent implements OnInit {
   }
 
   loadDevelopers(): void {
-    this.developerService.getDevelopers().subscribe(
+    this.developerService.getAllDevelopers().subscribe(
       (data: Developer[]) => {
         this.developers = data;
         this.filteredDevelopers = [...this.developers];
@@ -57,11 +55,16 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
   searchDevelopers(): void {
+    if (!this.searchTerm) {
+      this.filteredDevelopers = [...this.developers]; // Reset filtered list if search term is empty
+      return;
+    }
+
+    const lowerCaseSearch = this.searchTerm.toLowerCase();
     this.filteredDevelopers = this.developers.filter(developer =>
-      developer.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      developer.skills.some(skill => skill.toLowerCase().includes(this.searchTerm.toLowerCase()))
+      developer.name.toLowerCase().includes(lowerCaseSearch) ||
+      developer.skills.some(skill => skill.toLowerCase().includes(lowerCaseSearch))
     );
   }
 }

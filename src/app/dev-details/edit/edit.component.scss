@@ -1,0 +1,89 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.center {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 900px;
+  height: auto;
+}
+
+h1.dev-list {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid-container div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Ensure inputs take full width */
+}
+
+.input-error {
+  border-color: black; /* Example: style for invalid input */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.btn-outline-secondary {
+  background: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+button.btn-outline-secondary:hover {
+  background: #f0f0f0;
+}
+
+button.btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+button.btn-primary:disabled {
+  background: #007bff80;
+}
+
+button.btn-primary:hover:not(:disabled) {
+  background: #0056b3;
+}

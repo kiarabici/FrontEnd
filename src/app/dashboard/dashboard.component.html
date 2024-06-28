@@ -9,8 +9,10 @@
     &nbsp; &nbsp; <button class="addDeveloper" (click)="showForm()">+</button>
   </p>
 
-  <input type="text" [(ngModel)]="searchTerm" (input)="searchDevelopers()" placeholder="Search developers"
-    class="form-control mb-4">
+  <form (ngSubmit)="searchDevelopers()">
+    <input type="text" [(ngModel)]="searchTerm" (keyup.enter)="searchDevelopers()" placeholder="Search developers" class="form-control mb-4">
+  </form>
+
 
   <div class="table-responsive">
     <table class="table table-striped table-bordered">
@@ -35,7 +37,7 @@
           <td>{{ developer.experience }}</td>
           <td>
             <a [routerLink]="['/edit', developer.personId]" class="button button-green">Edit</a>
-            <button class="button button-red" (click)="deleteDeveloper(developer.personId)">Delete</button>
+            <button class="button button-red mx-3" (click)="deleteDeveloper(developer.personId)">Delete</button>
           </td>
         </tr>
       </tbody>
