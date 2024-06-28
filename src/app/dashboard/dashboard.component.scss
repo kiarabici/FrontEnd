@@ -1,0 +1,33 @@
+body{
+
+}
+.navbar{
+  padding: 50px;
+  border-bottom: 1px solid red;
+  background-color: whitesmoke;
+
+}
+
+.link{
+  margin-left:48%;
+  font-size: 25px;
+  text-decoration: none;
+  color: green;
+}
+.dev-list{
+  font-size: 28px;
+}
+.addDeveloper {
+  width: 60px;
+  height: 60px;
+  color: green;
+  background-color: white;
+  border: none;
+  border-radius: 50%; /* To make it circular */
+  font-size: 44px;
+  margin: -14px;/* Adjust as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
