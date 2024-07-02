@@ -1,18 +1,24 @@
 <!-- dashboard.component.html -->
 
-<nav class="navbar text-center">
-  <a class="link li-right">Manage Developers</a>
-</nav>
+<body>
+
 
 <div class="container mt-4">
   <p class="dev-list d-flex mt-4 pb-4">Developers List
-    &nbsp; &nbsp; <button class="addDeveloper" (click)="showForm()">+</button>
+    &nbsp; &nbsp;
+    <button class="cssbuttons-io" (click)="showForm()">
+      <span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+            fill="currentColor"></path>
+        </svg>
+        Add Developer</span>
+    </button>
   </p>
 
-  <form (ngSubmit)="searchDevelopers()">
-    <input type="text" [(ngModel)]="searchTerm" (keyup.enter)="searchDevelopers()" placeholder="Search developers" class="form-control mb-4">
-  </form>
-
+  <input type="text" [(ngModel)]="searchTerm" (input)="searchDevelopers()" placeholder="Search developers"
+    class="form-control mb-4">
 
   <div class="table-responsive">
     <table class="table table-striped table-bordered">
@@ -22,6 +28,7 @@
           <th>Surname</th>
           <th>Skills</th>
           <th>Experience</th>
+          <th>Projects</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -36,7 +43,14 @@
           </td>
           <td>{{ developer.experience }}</td>
           <td>
+            <ul>
+              <li *ngFor="let project of developer.projects">{{ project.projectName }}</li>
+            </ul>
+          </td>
+          <td>
+            <!-- Link to edit with developer's personId -->
             <a [routerLink]="['/edit', developer.personId]" class="button button-green">Edit</a>
+
             <button class="button button-red mx-3" (click)="deleteDeveloper(developer.personId)">Delete</button>
           </td>
         </tr>
@@ -44,3 +58,4 @@
     </table>
   </div>
 </div>
+</body>
