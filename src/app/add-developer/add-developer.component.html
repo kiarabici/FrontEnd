@@ -1,1 +1,35 @@
-<p>add-developer works!</p>
+<!-- add-developer.component.html -->
+
+<div class="overlay">
+  <form [formGroup]="developerForm" (ngSubmit)="onSubmit()">
+    <div class="center">
+      <div class="text-center py-3">
+        <h1 class="dev-list">{{ editMode ? 'Edit Developer' : 'New Developer' }}</h1>
+      </div>
+      <div class="grid-container">
+        <div>
+          <label for="firstName">First Name</label>
+          <input id="firstName" type="text" formControlName="firstName" class="form-control" />
+        </div>
+        <div>
+          <label for="lastName">Last Name</label>
+          <input id="lastName" type="text" formControlName="lastName" class="form-control" />
+        </div>
+        <div>
+          <label for="skills">Skills (comma-separated)</label>
+          <input id="skills" type="text" formControlName="skills" class="form-control" />
+        </div>
+        <div>
+          <label for="experience">Experience</label>
+          <input id="experience" type="text" formControlName="experience" class="form-control" />
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="button" class="btn btn-outline-secondary" (click)="onClose()">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!developerForm.valid">
+          {{ editMode ? 'Update' : 'Save' }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
