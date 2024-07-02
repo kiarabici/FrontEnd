@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Developer } from '../interfaces/developer';
 import { DeveloperService } from '../services/developer.service';
-import { Developer } from '../interfaces/developer'; // Ensure this import is correct
 
 @Component({
   selector: 'app-dashboard',
@@ -26,12 +26,26 @@ export class DashboardComponent implements OnInit {
     this.developerService.getAllDevelopers().subscribe(
       (data: Developer[]) => {
         this.developers = data;
-        this.filteredDevelopers = [...this.developers];
+        this.filteredDevelopers = [...this.developers]; // Initialize filtered list with all developers
+        this.fetchProjectsForDevelopers(); // Fetch projects for each developer
       },
       error => {
         console.error('Error loading developers: ', error);
       }
     );
+  }
+
+  fetchProjectsForDevelopers(): void {
+    this.developers.forEach(dev => {
+      this.developerService.getProjectsByDeveloper(dev.personId).subscribe(
+        projects => {
+          dev.projects = projects; // Assign projects to each developer
+        },
+        error => {
+          console.error(`Error fetching projects for developer ${dev.personId}: `, error);
+        }
+      );
+    });
   }
 
   showForm(): void {
@@ -50,7 +64,10 @@ export class DashboardComponent implements OnInit {
 
     if (confirm('Are you sure you want to delete this developer?')) {
       this.developerService.deleteDeveloper(id).subscribe(() => {
-        this.loadDevelopers(); // Reload the developers list after deletion
+        // After deletion, reload developers and their projects
+        this.loadDevelopers();
+      }, error => {
+        console.error(`Failed to delete developer with ID ${id}: `, error);
       });
     }
   }

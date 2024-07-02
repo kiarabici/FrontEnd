@@ -1,50 +1,149 @@
-body{
-
-}
-.navbar{
-  padding: 50px;
-  border-bottom: 1px solid red;
-  background-color: whitesmoke;
-
-}
-
-.link{
-  margin-left:45%;
-  font-size: 25px;
-  text-decoration: none;
-  color: green;
-}
-.dev-list{
-  font-size: 28px;
-}
-.addDeveloper {
-  width: 60px;
-  height: 60px;
-  color: green;
-  background-color: white;
-  border: none;
-  border-radius: 50%; /* To make it circular */
-  font-size: 44px;
-  margin: -20px;/* Adjust as needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
 /* styles.scss or styles.css */
 
-.button.button-green {
-  padding: 8px 16px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
+/* Body background */
+body {
+  background-color: rgb(0, 0, 0); /* Black background */
+  color: #fff; /* Text color */
+}
+
+/* Container style */
+.container {
+  padding: 50px;
+}
+
+/* Developer list header style */
+.dev-list {
+  font-size: 32px;
+  color: #ffffff; /* Green color */
+
+}
+
+
+
+/* Search input style */
+.form-control {
+  background-color: #a8a8a8; /* Dark gray background */
+  color: #fff; /* Text color */
+}
+
+/* Table style */
+.table {
+  background-color: #444; /* Dark gray background */
+  color: #fff; /* Text color */
+  border-collapse: collapse; /* Ensure table borders collapse */
+  width: 100%; /* Full width */
+}
+
+/* Table header style */
+.table thead {
+  background-color: #555; /* Dark gray background */
+  color: #fff; /* Text color */
+}
+
+/* Table header cells */
+.table th {
+  padding: 12px;
+  text-align: left;
+  font-size: 18px; /* Larger font size for headers */
+}
+
+/* Table body rows */
+.table tbody tr {
+  background-color: #333; /* Dark gray background for rows */
+}
+
+/* Table data cells */
+.table td {
+  padding: 12px;
+  font-size: 16px; /* Adjust font size for data cells */
+  border-bottom: 1px solid #555; /* Darker border */
+}
+
+/* Button styles */
+/* styles.scss or styles.css */
+/* styles.scss or styles.css */
+
+/* Button styles */
+.button {
+  display: inline-block;
+  padding: 8px 16px; /* Adjust padding as needed */
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
   transition: background-color 0.3s ease;
+}
+
+.button.button-green {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
 }
 
 .button.button-green:hover {
   background-color: #218838;
+}
+
+.button.button-red {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.button.button-red:hover {
+  background-color: #c82333;
+}
+.cssbuttons-io {
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(to right, #02693b, #109032);
+  overflow: hidden;
+}
+
+.cssbuttons-io svg {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+}
+
+.cssbuttons-io span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8em 1.2em 0.8em 1.05em;
+}
+
+.cssbuttons-io::before,
+.cssbuttons-io::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.cssbuttons-io::before {
+  content: "";
+  background: #ffffff;
+  width: 120%;
+  left: -10%;
+color: black!important;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.cssbuttons-io:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+.cssbuttons-io:active {
+  transform: scale(0.95);
 }

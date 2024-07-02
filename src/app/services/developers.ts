@@ -2,8 +2,8 @@ export class Developers {
 
 
   public id: number
-   public firstName: string
-   public lastName: string
+   public name: string
+   public surname: string
    public  dob: number
    public email: string
    public phone:number
@@ -14,7 +14,7 @@ export class Developers {
    public category: number
 
    constructor(id:number,
-     firstName: string,
+     name: string,
                laName: string,
                dbirth: number,
                emaiil:string,
@@ -25,8 +25,8 @@ export class Developers {
                repeatEvery:number,
                category:number) {
       this.id=id
-     this.firstName =firstName ;
-     this.lastName = laName;
+     this.name =name ;
+     this.surname = laName;
      this.dob = dbirth;
      this.email = emaiil;
      this.phone=phonee;
